@@ -1,20 +1,21 @@
+const express = require("../../node_modules/express");
+const router = express.Router();
 const path = require('path');
 
-module.exports = function(app){
   
-    app.get('/',function(req,res){
+    router.get('/',function(req,res){
         var fileName = path.resolve('app','public/home.html');
         //console.log(fileName);
         res.sendFile(fileName);
     });
 
-
-    app.get('/survey', function(req, res){
+    router.get('/survey', function(req, res){
         var fileName = path.resolve('app','public/survey.html');
         //console.log(fileName);
         res.sendFile(fileName);
           
     });
 
-}
+module.exports = router;
+
 
