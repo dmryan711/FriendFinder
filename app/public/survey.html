@@ -179,7 +179,7 @@
         </div>
         <div class="modal-body">
           <h2 id="match-name"></h2>
-          <img id="match-img" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg" alt="">
+          <img id="match-img" src="" alt="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -214,13 +214,35 @@
     //Test button
     $("#test").on("click",function(event){
         console.log("This is working");
-        var testData = {
-            name:"TestD",
-            lastName:"TestR"
-        };
+        var testData =  {
+    "name":"Test",
+    "photo":"https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiClNPNq9HhAhVpUd8KHddPDtMQjRx6BAgBEAU&url=https%3A%2F%2Fftw.usatoday.com%2F2017%2F01%2Frandy-moss-20-points-per-game-nba-kevin-garnett-latrell-sprewell-basketball&psig=AOvVaw3C-zqf0GIuSxBrmqgAPlB-&ust=1555391659584125",
+    "scores":[
+        5,
+        1,
+        4,
+        4,
+        5,
+        1,
+        2,
+        5,
+        4,
+        1
+      ]
+  };
 
         $.post("/api/friends",testData,function(data){
-            console.log("Test Data from api "+data.message);
+            console.log("Test Data from api "+data);
+            
+
+              // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+          $("#match-name").text(data.name);
+          console.log("Photo Link");
+          console.log(data.photo);
+          $("#match-img").attr("src", data.photo);
+
+          // Show the modal with the best match
+          $("#results-modal").modal("toggle");
         });
 
     });
@@ -275,6 +297,7 @@
           // Grab the result from the AJAX post so that the best match's name and photo are displayed.
           $("#match-name").text(data.name);
           $("#match-img").attr("src", data.photo);
+          
 
           // Show the modal with the best match
           $("#results-modal").modal("toggle");
