@@ -6,13 +6,9 @@ const fs = require('fs');
 
     router.get('/', function(req, res){
         //res.json({ message: 'API Friends Page!' }); 
-        fs.readFile(path.resolve('app','data/friends.js'),function(err,data){
-            if(err){
-               console.log(err);
-            }else{
-                res.json(JSON.parse(data));
-            }
-        });    
+        res.json(friendsList);
+
+          
     });
 
     router.post('/',function(req,res){
