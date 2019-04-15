@@ -1,11 +1,19 @@
-module.exports = function(app){
+const path = require('path');
 
-    
+module.exports = function(app){
+  
     app.get('/',function(req,res){
-        res.json({message:'Home Page!'});
+        var fileName = path.resolve('app','public/home.html');
+        //console.log(fileName);
+        res.sendFile(fileName);
     });
+
+
     app.get('/survey', function(req, res){
-        res.json({ message: 'Survey Page!' });    
+        var fileName = path.resolve('app','public/survey.html');
+        //console.log(fileName);
+        res.sendFile(fileName);
+          
     });
 
 }

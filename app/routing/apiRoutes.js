@@ -4,5 +4,9 @@ module.exports = function(app){
         res.json({ message: 'API Friends Page!' });     
     });
 
-    //other routes..
+    app.post('/api/friends',function(req,res){
+        console.log(req.body.name);
+        res.json({message:'Here you are'});
+    });
+
 }
